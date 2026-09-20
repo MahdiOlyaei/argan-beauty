@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-products",
+      "description": "Skincare products on stone blocks with pink flower",
+      "imageUrl": "https://picsum.photos/seed/beauty-hero/800/1000",
+      "imageHint": "skincare perfume"
+    }
+  ]
 }
