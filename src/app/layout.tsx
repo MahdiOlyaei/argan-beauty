@@ -4,8 +4,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'بیس فروشگاه آنلاین راست‌چین',
-  description: 'ساختار اولیه تمیز و استاندارد به همراه پالت رنگی دلخواه',
+  title: 'فروشگاه آنلاین',
+  description: 'ساختار پایه فروشگاه با پالت رنگی اختصاصی',
 };
 
 export default function RootLayout({
@@ -20,9 +20,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body min-h-screen flex flex-col antialiased">
+      <body className="font-body min-h-screen flex flex-col antialiased bg-background text-foreground">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 w-full">
           {children}
         </main>
         <Footer />
