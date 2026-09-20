@@ -2,36 +2,31 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ChevronLeft } from 'lucide-react';
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-products');
-
-  if (!heroImage) return null;
-
   return (
     <section className="relative w-full h-[85vh] min-h-[600px] lg:h-screen flex items-center overflow-hidden rtl bg-[#FFF8EF]">
-      {/* Full Background Image - Configured for Responsive Cropping */}
+      {/* Background Image - Using the specific project path as requested */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={heroImage.imageUrl}
-          alt={heroImage.description}
+          src="/images/hero/argan-hero.png"
+          alt="محصولات آرایشی و بهداشتی آرگان"
           fill
           priority
-          className="object-cover object-[35%_center] md:object-[left_center]"
-          data-ai-hint={heroImage.imageHint}
+          className="object-cover object-[30%_center] md:object-left"
         />
       </div>
 
-      {/* Decorative Overlay for better text readability if needed (Subtle) */}
+      {/* Subtle overlay for better readability on bright areas */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-transparent via-transparent to-[#FFF8EF]/10" />
 
       <div className="container relative z-10 px-6 lg:px-12 h-full flex items-center">
         {/* 
-          Text Container: 
-          - In RTL, justify-start places content on the Right side.
-          - max-w ensures text stays in the empty space of the image.
+          Text Container:
+          - In RTL (dir="rtl"), items-start aligns content to the Right side of the screen.
+          - The max-w ensures text stays in the empty (right) space of the image.
+          - Products/Flower remain visible on the Left.
         */}
         <div className="flex flex-col items-start text-right w-full max-w-[90%] md:max-w-[50%] lg:max-w-[450px] space-y-6 lg:space-y-8 animate-in fade-in slide-in-from-right-10 duration-1000">
           <div className="space-y-3 lg:space-y-4">
@@ -46,7 +41,7 @@ export function Hero() {
               className="text-[#7A4E3D]/80 leading-relaxed font-medium"
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
             >
-              مجموعه‌ای از محصولات آرایشی و بهداشتی برای یک روتین ساده، شیک و درخشان.
+              مجموعه‌ای از محصولات مراقبت از پوست برای یک روتین ساده، شیک و درخشان با عصاره‌های طبیعی.
             </p>
           </div>
 
