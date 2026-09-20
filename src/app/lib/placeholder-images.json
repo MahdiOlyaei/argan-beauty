@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-products",
+      "description": "محصولات مراقبت از پوست بر روی سنگ با گل صورتی",
+      "imageUrl": "https://picsum.photos/seed/beauty-hero/800/1000",
+      "imageHint": "skincare perfume"
+    }
+  ]
+}
