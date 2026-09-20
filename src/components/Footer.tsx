@@ -1,11 +1,10 @@
 export function Footer() {
   return (
-    <footer className="w-full border-t bg-card py-10 text-center">
+    <footer className="w-full border-t bg-card py-8">
       <div className="container mx-auto px-4">
-        <span className="text-sm font-medium text-muted-foreground">بخش فوتر (آماده طراحی اختصاصی شما)</span>
-        <p className="mt-2 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} تمام حقوق محفوظ است.
-        </p>
+        <div className="text-sm font-medium text-muted-foreground border-2 border-dashed p-4 text-center">
+          بخش فوتر (اطلاعات تماس، لینک‌های مفید، نمادها)
+        </div>
       </div>
     </footer>
   );
