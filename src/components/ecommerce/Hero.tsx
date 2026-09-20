@@ -9,78 +9,65 @@ import { ChevronLeft } from 'lucide-react';
 export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-products');
 
+  if (!heroImage) return null;
+
   return (
-    <section className="relative w-full min-h-[70vh] lg:min-h-[90vh] flex items-center bg-[#FFF8EF] overflow-hidden rtl py-12 lg:py-0">
-      {/* Decorative Background Shadows (Simulated) */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
-        <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-[#7A4E3D] blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[30%] bg-[#D97B63] blur-[100px] rounded-full" />
+    <section className="relative w-full h-[85vh] min-h-[600px] lg:h-screen flex items-center overflow-hidden rtl bg-[#FFF8EF]">
+      {/* Full Background Image - Configured for Responsive Cropping */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={heroImage.imageUrl}
+          alt={heroImage.description}
+          fill
+          priority
+          className="object-cover object-[35%_center] md:object-[left_center]"
+          data-ai-hint={heroImage.imageHint}
+        />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
-          {/* Text Content Area - Right side in RTL Desktop */}
-          <div className="flex flex-col items-start text-right space-y-6 lg:space-y-8 order-1 lg:order-1">
-            <div className="space-y-2 lg:space-y-4">
-              <h1 
-                className="text-[#7A4E3D] font-bold leading-[1.1]"
-                style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-              >
-                زیبایی<br />در جزئیات
-              </h1>
-              
-              <p 
-                className="text-[#7A4E3D]/80 max-w-[450px] leading-relaxed"
-                style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
-              >
-                مجموعه‌ای از محصولات آرایشی و بهداشتی برای یک روتین ساده، شیک و درخشان.
-              </p>
-            </div>
+      {/* Decorative Overlay for better text readability if needed (Subtle) */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-transparent via-transparent to-[#FFF8EF]/10" />
 
-            <div className="flex flex-col items-start gap-8 w-full">
-              <Button 
-                className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-10 py-7 text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
-              >
-                خرید کنید
-                <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
-              </Button>
-
-              {/* Bottom Slogan & Decorative Line - Desktop Focused but adapted */}
-              <div className="flex flex-col items-start gap-3 pt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-16 h-[1px] bg-[#D97B63]/40" />
-                  <p className="text-[#7A4E3D]/60 italic text-sm lg:text-base font-light">
-                    زیبایی، یک حس خوب است
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Imagery Area - Left side in RTL Desktop */}
-          <div className="relative w-full aspect-square lg:aspect-auto lg:h-[80vh] order-2 lg:order-2">
-            {heroImage && (
-              <div className="relative w-full h-full transform lg:scale-110 lg:translate-x-[-10%]">
-                <Image
-                  src={heroImage.imageUrl}
-                  alt={heroImage.description}
-                  fill
-                  className="object-contain lg:object-right select-none pointer-events-none"
-                  priority
-                  data-ai-hint={heroImage.imageHint}
-                />
-              </div>
-            )}
+      <div className="container relative z-10 px-6 lg:px-12 h-full flex items-center">
+        {/* 
+          Text Container: 
+          - In RTL, justify-start places content on the Right side.
+          - max-w ensures text stays in the empty space of the image.
+        */}
+        <div className="flex flex-col items-start text-right w-full max-w-[90%] md:max-w-[50%] lg:max-w-[450px] space-y-6 lg:space-y-8 animate-in fade-in slide-in-from-right-10 duration-1000">
+          <div className="space-y-3 lg:space-y-4">
+            <h1 
+              className="text-[#7A4E3D] font-bold leading-[1.1] tracking-tight"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+            >
+              زیبایی<br />در جزئیات
+            </h1>
             
-            {/* Subtle floating indicators/dots for Mobile feel consistency */}
-            <div className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 flex lg:hidden gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#D97B63]/30" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#D97B63]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#D97B63]/30" />
-            </div>
+            <p 
+              className="text-[#7A4E3D]/80 leading-relaxed font-medium"
+              style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
+            >
+              مجموعه‌ای از محصولات آرایشی و بهداشتی برای یک روتین ساده، شیک و درخشان.
+            </p>
           </div>
 
+          <div className="flex flex-col items-start gap-8 w-full">
+            <Button 
+              className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-10 py-7 text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
+            >
+              خرید کنید
+              <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+            </Button>
+
+            <div className="flex flex-col items-start gap-3 pt-4 opacity-70">
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-[1px] bg-[#D97B63]" />
+                <p className="text-[#7A4E3D] italic text-sm lg:text-base font-light">
+                  زیبایی، یک حس خوب است
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
