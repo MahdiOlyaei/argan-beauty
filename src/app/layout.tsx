@@ -4,8 +4,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'NextStartKit | Clean Starter',
-  description: 'A minimal and clean Next.js starter base.',
+  title: 'بیس فروشگاه آنلاین راست‌چین',
+  description: 'ساختار اولیه تمیز و استاندارد به همراه پالت رنگی دلخواه',
 };
 
 export default function RootLayout({
@@ -14,11 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="fa" dir="rtl" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body min-h-screen flex flex-col antialiased">
         <Header />
