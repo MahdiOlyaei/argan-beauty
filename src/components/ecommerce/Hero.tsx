@@ -11,9 +11,10 @@ export function Hero() {
       style={{ minHeight: 'clamp(620px, 78svh, 820px)' }}
     >
       {/* 
-        Background Image Layer:
-        Using a single Image component with fill and object-cover to ensure 
-        it acts as a unified background across all devices.
+        Unified Background Image Layer:
+        Using a single Image component with responsive object-position.
+        Focus is kept on the left (30% to 15%) to preserve products while 
+        leaving the right side clean for RTL text.
       */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <Image
@@ -22,30 +23,31 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[30%_center]"
+          className="object-cover object-[15%_center] sm:object-[25%_center] lg:object-[30%_center]"
         />
       </div>
 
-      {/* Subtle overlay if needed for text readability (minimal) */}
+      {/* Subtle overlay for minimal depth */}
       <div className="absolute inset-0 z-[1] bg-black/5 pointer-events-none" />
 
       <div className="container relative z-10 px-6 lg:px-12 h-full min-h-[inherit] flex items-center">
         {/* 
           Text Container:
-          Positioned as an overlay on top of the background image.
+          Positioned in the clean right-side area of the image.
+          max-width prevents collision with products on the left.
         */}
-        <div className="flex flex-col items-start text-right w-full max-w-[450px] space-y-6 lg:space-y-8">
+        <div className="flex flex-col items-start text-right w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[450px] space-y-6 lg:space-y-8">
           <div className="space-y-3 lg:space-y-4">
             <h1 
               className="text-[#7A4E3D] font-bold leading-[1.1] tracking-tight"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4.25rem)' }}
+              style={{ fontSize: 'clamp(2.25rem, 5vw, 4.25rem)' }}
             >
               زیبایی<br />در جزئیات
             </h1>
             
             <p 
               className="text-[#7A4E3D]/80 leading-relaxed font-medium"
-              style={{ fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}
+              style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.25rem)' }}
             >
               مجموعه‌ای از محصولات مراقبت از پوست برای یک روتین ساده، شیک و درخشان با عصاره‌های طبیعی.
             </p>
