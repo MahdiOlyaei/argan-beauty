@@ -63,7 +63,7 @@ export function Hero() {
             </h1>
             
             <p 
-              className="text-[#7A4E3D]/85 leading-relaxed font-medium"
+              className="text-[#7A4E3D]/85 leading-relaxed font-medium w-[70%] sm:w-auto"
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
             >
               مجموعه‌ای از محصولات مراقبت از پوست برای یک روتین ساده، شیک و درخشان با عصاره‌های طبیعی.
@@ -71,15 +71,26 @@ export function Hero() {
           </div>
 
           <div className="flex flex-col items-start gap-8 w-full">
-            <Button 
-              className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
-            >
-              خرید کنید
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
-            </Button>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              {/* Primary CTA (Right side in RTL) */}
+              <Button 
+                className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
+              >
+                محصولات
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
+              </Button>
 
-            <div className="flex flex-col items-start gap-3 pt-6 opacity-80">
-              <div className="flex items-center gap-4">
+              {/* Secondary CTA (Left side in RTL) */}
+              <Button
+                variant="outline"
+                className="border-2 border-[#D97B63] bg-transparent text-[#D97B63] hover:bg-[#D97B63] hover:text-white rounded-full px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl transition-colors shadow-lg hover:shadow-xl"
+              >
+                تخفیف‌ها
+              </Button>
+            </div>
+
+            <div className="flex flex-col items-start gap-3 pt-6 opacity-80 mt-8 sm:mt-0">
+              <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
                 <div className="w-16 md:w-24 h-[1px] bg-[#D97B63]" />
                 <p className="text-[#7A4E3D] italic text-sm md:text-base font-light">
                   زیبایی، یک حس خوب است
