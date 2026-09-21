@@ -1,53 +1,70 @@
 'use client';
 
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
 
+/**
+ * Hero Component
+ * 
+ * Implements Art Direction using three distinct assets:
+ * - Mobile: /images/hero/argan-hero-mob.webp
+ * - Tablet: /images/hero/argan-hero-tab.webp
+ * - Desktop: /images/hero/argan-hero.webp
+ * 
+ * The layout remains a unified composition with text overlaying the image.
+ * The text is positioned in a "Safe Zone" on the right (RTL) to avoid products on the left.
+ */
 export function Hero() {
   return (
     <section 
-      className="relative w-full overflow-hidden rtl bg-[#FFF8EF]"
-      style={{ minHeight: 'clamp(620px, 78svh, 820px)' }}
+      className="relative w-full overflow-hidden bg-[#FFF8EF] rtl flex items-center"
+      style={{ minHeight: 'clamp(620px, 80svh, 900px)' }}
     >
       {/* 
-        Unified Background Image Layer:
-        Using a single Image component with responsive object-position.
-        Focus is kept on the left (30% to 15%) to preserve products while 
-        leaving the right side clean for RTL text.
+        Responsive Art Direction Layer 
+        Using native <picture> for optimal asset selection based on viewport.
       */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <Image
+      <picture className="absolute inset-0 z-0 select-none pointer-events-none">
+        {/* Mobile Asset: Up to 767px */}
+        <source 
+          media="(max-width: 767px)" 
+          srcSet="/images/hero/argan-hero-mob.webp" 
+        />
+        {/* Tablet Asset: 768px to 1023px */}
+        <source 
+          media="(min-width: 768px) and (max-width: 1023px)" 
+          srcSet="/images/hero/argan-hero-tab.webp" 
+        />
+        {/* Desktop Asset: 1024px and up */}
+        <img
           src="/images/hero/argan-hero.webp"
           alt="محصولات آرایشی و بهداشتی آرگان"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[15%_center] sm:object-[25%_center] lg:object-[30%_center]"
+          className="w-full h-full object-cover object-[20%_center] md:object-[30%_center] lg:object-center"
         />
-      </div>
+      </picture>
 
-      {/* Subtle overlay for minimal depth */}
+      {/* Subtle overlay for visual depth */}
       <div className="absolute inset-0 z-[1] bg-black/5 pointer-events-none" />
 
-      <div className="container relative z-10 px-6 lg:px-12 h-full min-h-[inherit] flex items-center">
+      {/* Content Layer */}
+      <div className="container relative z-10 px-6 lg:px-12 h-full flex items-center">
         {/* 
-          Text Container:
-          Positioned in the clean right-side area of the image.
-          max-width prevents collision with products on the left.
+          Text Safe Zone:
+          Positioned on the Right side (RTL start).
+          max-width ensures it stays clear of the products/flower on the left side of the image.
         */}
-        <div className="flex flex-col items-start text-right w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[450px] space-y-6 lg:space-y-8">
-          <div className="space-y-3 lg:space-y-4">
+        <div className="flex flex-col items-start text-right w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px] space-y-6 lg:space-y-8 py-12">
+          <div className="space-y-3 lg:space-y-5">
             <h1 
               className="text-[#7A4E3D] font-bold leading-[1.1] tracking-tight"
-              style={{ fontSize: 'clamp(2.25rem, 5vw, 4.25rem)' }}
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
             >
               زیبایی<br />در جزئیات
             </h1>
             
             <p 
-              className="text-[#7A4E3D]/80 leading-relaxed font-medium"
-              style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.25rem)' }}
+              className="text-[#7A4E3D]/85 leading-relaxed font-medium"
+              style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
             >
               مجموعه‌ای از محصولات مراقبت از پوست برای یک روتین ساده، شیک و درخشان با عصاره‌های طبیعی.
             </p>
@@ -55,15 +72,15 @@ export function Hero() {
 
           <div className="flex flex-col items-start gap-8 w-full">
             <Button 
-              className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-8 md:px-10 py-6 md:py-7 text-lg md:text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
+              className="bg-[#D97B63] hover:bg-[#D97B63]/90 text-white rounded-full px-8 md:px-12 py-6 md:py-8 text-lg md:text-xl flex items-center gap-3 transition-all shadow-lg hover:shadow-xl group"
             >
               خرید کنید
               <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
             </Button>
 
-            <div className="flex flex-col items-start gap-3 pt-4 opacity-70">
-              <div className="flex items-center gap-3">
-                <div className="w-12 md:w-16 h-[1px] bg-[#D97B63]" />
+            <div className="flex flex-col items-start gap-3 pt-6 opacity-80">
+              <div className="flex items-center gap-4">
+                <div className="w-16 md:w-24 h-[1px] bg-[#D97B63]" />
                 <p className="text-[#7A4E3D] italic text-sm md:text-base font-light">
                   زیبایی، یک حس خوب است
                 </p>
