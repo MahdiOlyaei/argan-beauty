@@ -10,7 +10,7 @@ export function Hero() {
       {/* Background Image - Using the specific project path as requested */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/argan-hero.png"
+          src="/images/hero/argan-hero.webp"
           alt="محصولات آرایشی و بهداشتی آرگان"
           fill
           priority
