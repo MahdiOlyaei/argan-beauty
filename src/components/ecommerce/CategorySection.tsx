@@ -1,7 +1,6 @@
-
 'use client';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { CategoryCard } from './CategoryCard';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -25,22 +24,6 @@ export function CategorySection() {
         
         {/* Header Area */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
-          <div className="flex items-center gap-4 sm:gap-8">
-            {/* Navigation Arrows */}
-            <div className="flex items-center gap-2">
-              <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#7A4E3D]/10 flex items-center justify-center hover:bg-[#F8C4A4]/20 transition-all">
-                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#7A4E3D]" />
-              </button>
-              <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#7A4E3D]/10 flex items-center justify-center hover:bg-[#F8C4A4]/20 transition-all">
-                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#7A4E3D]" />
-              </button>
-            </div>
-            {/* View All Link */}
-            <a href="/categories" className="text-[#7A4E3D]/60 text-sm sm:text-base font-bold underline underline-offset-8 hover:text-[#D97B63] transition-colors">
-              مشاهده همه دسته‌ها
-            </a>
-          </div>
-
           <div className="space-y-2 text-right">
             <span className="text-[#7A4E3D]/40 text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold block">SHOP BY CATEGORY</span>
             <h2 className="text-[#7A4E3D] text-3xl sm:text-5xl lg:text-6xl font-black leading-tight">
@@ -49,6 +32,13 @@ export function CategorySection() {
             <p className="text-[#7A4E3D]/60 text-sm sm:text-lg font-medium">
               هر آنچه برای زیبایی و مراقبت از خود نیاز دارید
             </p>
+          </div>
+
+          <div className="flex items-center gap-4 sm:gap-8">
+            {/* View All Link */}
+            <a href="/categories" className="text-[#7A4E3D]/60 text-sm sm:text-base font-bold underline underline-offset-8 hover:text-[#D97B63] transition-colors">
+              مشاهده همه دسته‌ها
+            </a>
           </div>
         </div>
 
