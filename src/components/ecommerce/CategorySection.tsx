@@ -42,7 +42,7 @@ export function CategorySection() {
           </div>
         </div>
 
-        {/* Categories Grid */}
+        {/* Categories Grid - Mobile: 1 col, Tablet: 2 cols, Desktop: 3 cols */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {categories.map((category) => (
             <CategoryCard key={category.id} {...category} />
