@@ -5,12 +5,12 @@ import { CategoryCard } from './CategoryCard';
 import { Button } from '@/components/ui/button';
 
 const categories = [
-  { id: '1', title: 'مراقبت از پوست', count: '+250', imageKey: 'cat-skin', backgroundImage: '/images/categories/medicube.webp' },
-  { id: '2', title: 'مراقبت از مو', count: '+180', imageKey: 'cat-hair', backgroundImage: '/images/categories/argan-midas.webp' },
-  { id: '3', title: 'آرایشی', count: '+320', imageKey: 'cat-makeup', backgroundImage: '/images/categories/dior-lipglass.webp' },
-  { id: '4', title: 'مراقبت از بدن', count: '+140', imageKey: 'cat-body', backgroundImage: '/images/categories/bodycare-clinique.webp' },
-  { id: '5', title: 'عطر و خوشبوکننده', count: '+120', imageKey: 'cat-perfume', backgroundImage: '/images/categories/perfume.webp' },
-  { id: '6', title: 'رنگ مو', count: '+80', imageKey: 'cat-gifts', backgroundImage: '/images/categories/haircolor-enzo.webp' },
+  { id: '1', title: 'مراقبت از پوست', count: '+250', imageKey: 'cat-skin' },
+  { id: '2', title: 'مراقبت از مو', count: '+180', imageKey: 'cat-hair' },
+  { id: '3', title: 'آرایشی', count: '+320', imageKey: 'cat-makeup' },
+  { id: '4', title: 'مراقبت از بدن', count: '+140', imageKey: 'cat-body' },
+  { id: '5', title: 'عطر و خوشبوکننده', count: '+120', imageKey: 'cat-perfume' },
+  { id: '6', title: 'رنگ مو', count: '+80', imageKey: 'cat-gifts' },
 ];
 
 export function CategorySection() {
@@ -30,8 +30,7 @@ export function CategorySection() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-8">
-            {/* View All Link */}
+          <div className="flex items-center gap-4">
             <a href="/categories" className="text-[#7A4E3D]/60 text-sm sm:text-base font-bold underline underline-offset-8 hover:text-[#C7606D] transition-colors">
               مشاهده همه دسته‌ها
             </a>
@@ -50,7 +49,6 @@ export function CategorySection() {
           className="relative w-full rounded-[2.5rem] sm:rounded-[3.5rem] bg-cover bg-no-repeat bg-[#FDF6F0] overflow-hidden min-h-[250px] sm:min-h-[350px] flex items-center max-lg:bg-[position:-8rem_center] lg:bg-left-center"
           style={{ backgroundImage: 'url("/images/categories/NATURAL-beauty-evryday.webp")' }}
         >
-          {/* Banner Text Content */}
           <div className="relative z-10 w-full lg:w-3/5 p-8 sm:p-16 flex flex-col items-start text-right space-y-6 sm:space-y-8">
             <div className="space-y-2 sm:space-y-4">
               <span className="text-[#7A4E3D]/40 text-[10px] sm:text-xs tracking-[0.2em] font-bold block">BEAUTY FOR A BETTER YOU</span>
@@ -62,13 +60,13 @@ export function CategorySection() {
               </p>
             </div>
             
-            <Button className="bg-[#D97B63] hover:bg-[#C7606D] text-white rounded-full px-8 sm:px-12 py-6 sm:py-7 text-base sm:text-lg flex items-center gap-3 group transition-colors">
+            {/* Primary Action Button */}
+            <Button className="bg-[#D97B63] hover:bg-[#C7606D] text-[#FFF8EF] rounded-full px-8 sm:px-12 py-6 sm:py-7 text-base sm:text-lg flex items-center gap-3 group transition-colors">
               شروع خرید
               <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             </Button>
           </div>
           
-          {/* Decorative Text in Banner Left Side */}
           <div dir="ltr" className="hidden lg:flex absolute left-12 bottom-16 flex-col items-start gap-1 text-white font-black text-[10px] tracking-widest uppercase text-left">
             <span>Natural</span>
             <span>Beauty</span>

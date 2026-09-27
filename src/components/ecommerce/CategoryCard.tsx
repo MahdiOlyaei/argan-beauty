@@ -38,8 +38,9 @@ export function CategoryCard({ title, count, imageKey, backgroundImage }: Catego
           </p>
         </div>
         
-        <button className="flex items-center gap-2 text-[#7A4E3D]/70 hover:text-[#C7606D] transition-colors group/btn">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#F8C4A4]/30 flex items-center justify-center group-hover/btn:bg-[#C7606D] group-hover/btn:text-white transition-all">
+        {/* Secondary Action - Arrow on the Left */}
+        <button className="flex items-center gap-2 bg-transparent text-[#D97B63] hover:text-[#C7606D] transition-colors group/btn">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-[#D97B63] bg-transparent flex items-center justify-center group-hover/btn:bg-[#D97B63] group-hover/btn:border-[#D97B63] group-hover/btn:text-[#FFF8EF] transition-all">
             <ChevronLeft className="w-4 h-4" />
           </div>
           <span className="text-[10px] sm:text-xs font-bold tracking-tight">مشاهده محصولات</span>

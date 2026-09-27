@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -14,7 +13,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Heart, ShoppingCart, Star } from "lucide-react";
 
-// Static data to ensure consistency
 const products = [
   { id: 1, name: "ماسک لب لانر", description: "لب آبرسان و ترمیم کننده", price: "۱,۴۹۰,۰۰۰", rating: 4.8, reviews: 1245 },
   { id: 2, name: "سرم نیاسینامید اوردینری", description: "مناسب انواع پوست", price: "۹۸۰,۰۰۰", rating: 4.7, reviews: 892 },
@@ -83,13 +81,15 @@ export function ProductSection() {
             </div>
 
             <div className="flex items-center self-end md:self-center">
-              <Button className="whitespace-nowrap rounded-full px-6 h-11 text-sm font-semibold transition-colors shadow-sm bg-[#D97B63] text-white hover:bg-[#C7606D]">
+              {/* Primary Action Button */}
+              <Button className="whitespace-nowrap rounded-full px-6 h-11 text-sm font-semibold transition-colors shadow-sm bg-[#D97B63] text-[#FFF8EF] hover:bg-[#C7606D]">
                   مشاهده همه محصولات
                   <ChevronLeft className="h-4 w-4 mr-2"/>
               </Button>
               <div className="flex items-center mr-3">
-                 <CarouselPrevious className="relative w-10 h-10 rounded-full border border-[#F8C4A4]/50 bg-[#FFF8EF] text-[#D97B63] hover:bg-[#F8C4A4]/40" />
-                 <CarouselNext className="relative w-10 h-10 rounded-full border border-[#F8C4A4]/50 bg-[#FFF8EF] text-[#D97B63] hover:bg-[#F8C4A4]/40 mr-2" />
+                 {/* Secondary Action Controls */}
+                 <CarouselPrevious className="relative w-10 h-10 rounded-full border border-[#D97B63] bg-transparent text-[#D97B63] hover:bg-[#D97B63] hover:text-[#FFF8EF]" />
+                 <CarouselNext className="relative w-10 h-10 rounded-full border border-[#D97B63] bg-transparent text-[#D97B63] hover:bg-[#D97B63] hover:text-[#FFF8EF] mr-2" />
               </div>
             </div>
           </div>
@@ -115,7 +115,8 @@ export function ProductSection() {
                                 <p className="text-lg font-bold mt-2 text-right text-[#7A4E3D]">{product.price} <span className="font-normal text-sm">تومان</span></p>
                                
                                <div className="mt-auto pt-4">
-                                    <Button className="w-full rounded-full font-semibold h-11 text-base transition-colors bg-[#D97B63] text-white hover:bg-[#C7606D]">
+                                    {/* Primary Action Button */}
+                                    <Button className="w-full rounded-full font-semibold h-11 text-base transition-colors bg-[#D97B63] text-[#FFF8EF] hover:bg-[#C7606D]">
                                        <ShoppingCart className="w-5 h-5 ml-2"/>
                                        افزودن به سبد خرید
                                     </Button>
@@ -150,7 +151,8 @@ export function ProductSection() {
                 <p className="text-sm font-medium text-[#D97B63]">SPECIAL OFFER</p>
                 <h3 className="text-3xl font-bold mt-2 text-[#7A4E3D]">درخشش طبیعی، هر روز</h3>
                 <p className="text-base mt-3 text-[#7A4E3D]/70">تا ۳۰٪ تخفیف روی محصولات مراقبت پوست</p>
-                <Button size="lg" className="mt-6 rounded-full h-12 px-8 text-base bg-[#D97B63] text-white hover:bg-[#C7606D]">مشاهده محصولات با تخفیف</Button>
+                {/* Primary Action Button */}
+                <Button size="lg" className="mt-6 rounded-full h-12 px-8 text-base bg-[#D97B63] text-[#FFF8EF] hover:bg-[#C7606D]">مشاهده محصولات با تخفیف</Button>
             </div>
             <div className="relative h-full w-full rounded-xl min-h-[20rem] bg-[#F8C4A4]/40"></div>
             <div className="flex flex-col justify-center gap-y-6">
@@ -162,7 +164,7 @@ export function ProductSection() {
                           <p className="text-sm text-[#7A4E3D]/70">{feature.description}</p>
                       </div>
                   </div>
-                ))}\
+                ))}
             </div>
           </div>
           <div className="md:hidden">
@@ -172,7 +174,8 @@ export function ProductSection() {
                           <p className="text-xs font-medium text-[#D97B63]">SPECIAL OFFER</p>
                           <h3 className="text-2xl font-bold mt-1 text-[#7A4E3D]">درخشش طبیعی، هر روز</h3>
                           <p className="text-sm mt-2 text-[#7A4E3D]/70">تا ۳۰٪ تخفیف روی محصولات مراقبت پوست</p>
-                          <Button size="sm" className="mt-4 rounded-full h-10 bg-[#D97B63] text-white hover:bg-[#C7606D]">مشاهده محصولات</Button>
+                          {/* Primary Action Button */}
+                          <Button size="sm" className="mt-4 rounded-full h-10 bg-[#D97B63] text-[#FFF8EF] hover:bg-[#C7606D]">مشاهده محصولات</Button>
                       </div>
                       <div className="relative h-56 bg-[#F8C4A4]/40"></div>
                   </div>
