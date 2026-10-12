@@ -27,7 +27,7 @@ export function Hero() {
       </picture>
 
       {/* Content Layer with Text Safe Zone on the Right */}
-      <div className="container relative z-10 px-6 sm:px-12 lg:px-20 h-full w-full flex items-center justify-start">
+      <div className="container relative z-10 px-6 sm:px-12 lg:px-4 h-full w-full flex items-center justify-start">
         <div className="flex flex-col items-start text-right w-full max-w-[290px] sm:max-w-[380px] md:max-w-[440px] lg:max-w-[520px] space-y-5 sm:space-y-7 py-10 mr-0 ml-auto">
           <div className="space-y-3 sm:space-y-4">
             <h1 
@@ -48,7 +48,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2 w-full">
             {/* Primary CTA */}
             <Button 
-              className="bg-[#D97B63] hover:bg-[#C7606D] text-[#FFF8EF] rounded-full px-8 md:px-12 py-5 md:py-7 text-base md:text-lg flex items-center gap-3 transition-colors shadow-md hover:shadow-lg group w-full sm:w-auto justify-center"
+              className="bg-[#D97B63] hover:bg-[#C7606D] text-[#FFF8EF] rounded-full px-8 md:px-12 py-5 md:py-7 text-base md:text-lg flex items-center gap-3 transition-colors shadow-md hover:shadow-lg group sm:w-auto justify-center"
             >
               محصولات
               <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -57,7 +57,7 @@ export function Hero() {
             {/* Secondary CTA */}
             <Button
               variant="outline"
-              className="border-2 border-[#D97B63] bg-transparent text-[#D97B63] hover:bg-[#D97B63] hover:text-[#FFF8EF] rounded-full px-8 md:px-12 py-5 md:py-7 text-base md:text-lg transition-colors shadow-md hover:shadow-lg w-full sm:w-auto justify-center"
+              className="border-2 border-[#D97B63] bg-transparent text-[#D97B63] hover:bg-[#D97B63] hover:text-[#FFF8EF] rounded-full px-8 md:px-12 py-5 md:py-7 text-base md:text-lg transition-colors shadow-md hover:shadow-lg sm:w-auto justify-center"
             >
               تخفیف‌ها
             </Button>

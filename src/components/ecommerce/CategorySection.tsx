@@ -5,12 +5,12 @@ import { CategoryCard } from './CategoryCard';
 import { Button } from '@/components/ui/button';
 
 const categories = [
-  { id: '1', title: 'مراقبت از پوست', count: '+250', imageKey: 'cat-skin' },
-  { id: '2', title: 'مراقبت از مو', count: '+180', imageKey: 'cat-hair' },
-  { id: '3', title: 'آرایشی', count: '+320', imageKey: 'cat-makeup' },
-  { id: '4', title: 'مراقبت از بدن', count: '+140', imageKey: 'cat-body' },
-  { id: '5', title: 'عطر و خوشبوکننده', count: '+120', imageKey: 'cat-perfume' },
-  { id: '6', title: 'رنگ مو', count: '+80', imageKey: 'cat-gifts' },
+  { id: '1', title: 'مراقبت از پوست', count: '+250', imageKey: 'cat-skin', backgroundImage: '/images/categories/medicube.webp' },
+  { id: '2', title: 'مراقبت از مو', count: '+180', imageKey: 'cat-hair', backgroundImage: '/images/categories/argan-midas.webp' },
+  { id: '3', title: 'آرایشی', count: '+320', imageKey: 'cat-makeup', backgroundImage: '/images/categories/dior-lipglass.webp' },
+  { id: '4', title: 'مراقبت از بدن', count: '+140', imageKey: 'cat-body', backgroundImage: '/images/categories/bodycare-clinique.webp' },
+  { id: '5', title: 'عطر و خوشبوکننده', count: '+120', imageKey: 'cat-perfume', backgroundImage: '/images/categories/perfume.webp' },
+  { id: '6', title: 'رنگ مو', count: '+80', imageKey: 'cat-gifts', backgroundImage: '/images/categories/haircolor-enzo.webp' },
 ];
 
 export function CategorySection() {

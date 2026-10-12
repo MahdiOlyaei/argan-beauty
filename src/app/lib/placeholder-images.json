@@ -49,5 +49,10 @@
       "imageUrl": "https://picsum.photos/seed/beauty-banner/1200/500",
       "imageHint": "woman face flower"
     }
-  ]
+  ],
+  "construction": {
+    "sm": "https://picsum.photos/seed/construction-sm/500/300",
+    "md": "https://picsum.photos/seed/construction-md/800/500",
+    "lg": "https://picsum.photos/seed/construction-lg/1200/700"
+  }
 }
