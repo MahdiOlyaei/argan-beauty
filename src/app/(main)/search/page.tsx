@@ -34,7 +34,11 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
 }
 
 async function SearchResults({ query }: { query: string }) {
-  const allProducts: Product[] = products;
+  const allProducts: Product[] = products.map((p: any) => ({
+    ...p,
+    images: [p.image],
+    category: p.category || 'دسته بندی عمومی',
+  }));
 
   const filteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())

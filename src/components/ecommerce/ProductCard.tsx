@@ -13,7 +13,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <Link href={`/product/${product.slug}`} className="bg-white rounded-lg shadow-md overflow-hidden group">
       <div className="relative w-full h-48">
         <Image
-          src={product.image}
+          src={product.images[0]}
           alt={product.name}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -22,10 +22,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="p-4 text-right">
         <h3 className="text-lg font-semibold text-[#7A4E3D] truncate">{product.name}</h3>
         <div className="flex justify-between items-center mt-2">
-          <div className="flex items-center text-yellow-500">
-            <Star className="w-4 h-4 fill-current" />
-            <span className="text-sm text-gray-600 mr-1">({product.rating})</span>
-          </div>
+          <div></div>
           <p className="text-base font-bold text-[#C7606D]">{product.price.toLocaleString('fa-IR')} تومان</p>
         </div>
       </div>
