@@ -1,52 +1,52 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Palette: #FFF8EF, #F8C4A4, #D97B63, #C7606D, #7A4E3D */
-    
+    /* پالت رنگی اصلی وبسایت */
     --background: 36 100% 97%; /* #FFF8EF */
-    --foreground: 17 33% 36%; /* #7A4E3D */
+    --foreground: 22 33% 36%; /* #7A4E3D */
     
     --card: 36 100% 97%;
-    --card-foreground: 17 33% 36%;
+    --card-foreground: 22 33% 36%;
     
     --popover: 36 100% 97%;
-    --popover-foreground: 17 33% 36%;
+    --popover-foreground: 22 33% 36%;
     
-    --primary: 17 33% 36%; /* #7A4E3D */
+    --primary: 11 62% 72%; /* #D97B63 */
     --primary-foreground: 36 100% 97%;
     
-    --secondary: 11 62% 62%; /* #D97B63 */
-    --secondary-foreground: 36 100% 97%;
+    --secondary: 22 85% 91%; /* #FEE8D8 */
+    --secondary-foreground: 22 33% 36%;
     
-    --muted: 22 85% 81%; /* #F8C4A4 */
-    --muted-foreground: 17 33% 36%;
+    --muted: 22 45% 85%; /* #F8C4A4 */
+    --muted-foreground: 22 33% 46%;
     
-    --accent: 22 85% 81%; /* #F8C4A4 */
-    --accent-foreground: 17 33% 36%;
+    --accent: 352 45% 68%; /* #C7606D */
+    --accent-foreground: 36 100% 97%;
     
-    --destructive: 352 49% 58%; /* #C7606D */
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 36 100% 97%;
+
+    --border: 22 85% 88%; /* #FEE8D8 with a bit more substance */
+    --input: 22 85% 88%;
+    --ring: 11 62% 72%;
     
-    --border: 17 33% 36%;
-    --input: 17 33% 36%;
-    --ring: 17 33% 36%;
-    
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* فعلا برای حالت دارک از همان پالت با اولویت رنگ‌های تیره استفاده می‌کنیم */
-    --background: 17 33% 15%; 
-    --foreground: 36 100% 97%;
-    --primary: 22 85% 81%;
-    --primary-foreground: 17 33% 15%;
-    --accent: 11 62% 62%;
-    --accent-foreground: 36 100% 97%;
-    --border: 17 33% 36%;
-  }
+      /* فعلا برای حالت دارک از همان پالت با اولویت رنگ‌های تیره استفاده می‌کنیم */
+      --background: 17 33% 15%; 
+      --foreground: 36 100% 97%;
+      --primary: 22 85% 81%;
+      --primary-foreground: 17 33% 15%;
+      --accent: 11 62% 62%;
+      --accent-foreground: 36 100% 97%;
+      --border: 17 33% 36%;
+    }
 }
 
 @layer base {
@@ -56,5 +56,30 @@
   body {
     @apply bg-background text-foreground text-right;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Floating animation for Special Offer Badge */
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-12px) translateX(4px) rotate(1deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(-1deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float {
+      animation: none;
+    }
   }
 }

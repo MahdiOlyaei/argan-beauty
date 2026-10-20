@@ -4,13 +4,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Heart, ShoppingCart, User, Menu, X, ChevronDown, CircleUserRound, ChevronLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Search from "@/components/ecommerce/Search";
 import { useCart } from "@/context/CartContext";
 import MiniCart from "@/components/ecommerce/MiniCart";
+
+const Search = dynamic(() => import('@/components/ecommerce/Search'), { ssr: false });
 
 const navLinks = [
   { href: "/", label: "صفحه اصلی" },
@@ -37,7 +39,6 @@ export const Header = () => {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
-  const [isMobileView, setIsMobileView] = useState(false);
 
   const miniCartTimer = useRef<NodeJS.Timeout | null>(null);
   const productsTimer = useRef<NodeJS.Timeout | null>(null);
@@ -75,13 +76,6 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    const checkIsMobile = () => setIsMobileView(window.innerWidth < 1024);
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
-
-  useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (mobileCartRef.current && !mobileCartRef.current.contains(event.target as Node)) {
         setIsMiniCartOpen(false);
@@ -96,20 +90,35 @@ export const Header = () => {
       }
     };
 
-    if (isMobileView && isMiniCartOpen) {
-      document.addEventListener('mousedown', handleOutsideClick);
-      window.addEventListener('scroll', handleScroll);
-    }
+    const addMobileListeners = () => {
+      if (window.innerWidth < 1024 && isMiniCartOpen) {
+        document.addEventListener('mousedown', handleOutsideClick);
+        window.addEventListener('scroll', handleScroll);
+      }
+    };
 
-    return () => {
+    const removeMobileListeners = () => {
       document.removeEventListener('mousedown', handleOutsideClick);
       window.removeEventListener('scroll', handleScroll);
+    };
+
+    const handleResize = () => {
+      removeMobileListeners();
+      addMobileListeners();
+    };
+
+    addMobileListeners();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      removeMobileListeners();
+      window.removeEventListener('resize', handleResize);
       if (scrollCloseTimerRef.current) {
         clearTimeout(scrollCloseTimerRef.current);
         scrollCloseTimerRef.current = null;
       }
     };
-  }, [isMiniCartOpen, isMobileView]);
+  }, [isMiniCartOpen]);
 
   useEffect(() => {
     const mockAuth = searchParams.get('mockAuth');
@@ -136,7 +145,7 @@ export const Header = () => {
     const props = isButtonClick ? { onClick } : { href: href || '#' };
 
     return (
-      <Button asChild size="icon" variant="ghost" className={`rounded-full text-[#7A4E3D] hover:bg-[#F8C4A4]/50 ${className || ''}`}>
+      <Button asChild size="icon" variant="ghost" className={`rounded-full text-[#7A4E3D] hover:bg-[#F8C4A4]/50 [&_svg]:h-6 [&_svg]:w-6 ${className || ''}`}>
         <WrapperComponent {...props} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="relative">
           {children}
           {badgeCount !== undefined && badgeCount > 0 && (
@@ -152,9 +161,10 @@ export const Header = () => {
   const productsDropdownClasses = `
     absolute top-full right-0 mt-2 w-64 bg-[#FFF8EF] rounded-xl shadow-lg shadow-[#7A4E3D]/10 border border-[#F8C4A4]/50 z-10 origin-top
     transition-all
-    ${isProductsDropdownOpen
-      ? 'duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-100 visible translate-y-0'
-      : 'duration-160 ease-in opacity-0 invisible -translate-y-[8px]'
+    ${
+      isProductsDropdownOpen
+        ? 'duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-100 visible translate-y-0'
+        : 'duration-160 ease-in opacity-0 invisible -translate-y-[8px]'
     }
     ${isProductsDropdownOpen ? 'pointer-events-auto' : 'pointer-events-none'}
   `;
@@ -226,25 +236,25 @@ export const Header = () => {
 
           <div className="absolute left-1/2 -translate-x-1/2">
             <Link href="/" aria-label="Argan Beauty Home">
-              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={160} height={45} priority />
+              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={180} height={51} priority />
             </Link>
           </div>
 
           <div className="flex items-center gap-x-3">
             <Search className="w-64 h-11" />
             <div className="flex items-center gap-x-0.5">
-              <IconWrapper href="/wishlist"><Heart className="h-5.5 w-5.5" /></IconWrapper>
+              <IconWrapper href="/wishlist"><Heart /></IconWrapper>
               <div className="relative" onMouseEnter={handleMiniCartEnter} onMouseLeave={handleMiniCartLeave}>
                 <IconWrapper href="/cart" badgeCount={cartItemCount}>
-                  <ShoppingCart className="h-5.5 w-5.5" />
+                  <ShoppingCart />
                 </IconWrapper>
                 <MiniCart open={isMiniCartOpen} />
               </div>
               <IconWrapper href="/account">
                 {isAuthenticated ? (
-                  <CircleUserRound className="h-5.5 w-5.5" />
+                  <CircleUserRound />
                 ) : (
-                  <User className="h-5.5 w-5.5" />
+                  <User />
                 )}
               </IconWrapper>
             </div>
@@ -253,19 +263,19 @@ export const Header = () => {
 
         <div className="lg:hidden flex flex-col">
           <div className="flex items-center justify-between h-20">
-            <Button size="icon" variant="ghost" className="rounded-full text-[#7A4E3D]" onClick={() => setIsMenuOpen(true)} aria-label="Open menu">
-              <Menu className="h-7 w-7" />
-            </Button>
+            <IconWrapper onClick={() => setIsMenuOpen(true)} isMobile>
+                <Menu />
+            </IconWrapper>
             
             <Link href="/" aria-label="Argan Beauty Home">
-              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={125} height={35} priority />
+              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={175} height={50} priority />
             </Link>
 
             <div className="flex items-center">
-                <IconWrapper href="/wishlist" isMobile><Heart className="h-5 w-5" /></IconWrapper>
+                <IconWrapper href="/wishlist" isMobile><Heart /></IconWrapper>
                 <div className="relative" ref={mobileCartRef}>
                     <IconWrapper onClick={toggleMiniCart} badgeCount={cartItemCount} isMobile>
-                        <ShoppingCart className="h-5 w-5" />
+                        <ShoppingCart />
                     </IconWrapper>
                     <MiniCart open={isMiniCartOpen} />
                 </div>
@@ -283,10 +293,10 @@ export const Header = () => {
         <div className={`absolute top-0 right-0 h-full w-[85%] max-w-sm bg-[#FFF8EF] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex items-center justify-between p-4 border-b border-[#F8C4A4]/50">
             <Link href="/" aria-label="Argan Beauty Home" onClick={() => setIsMenuOpen(false)}>
-              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={125} height={35} />
+              <Image src="/images/logo/argan-beauty-logo.png" alt="Argan Beauty Logo" width={175} height={50} />
             </Link>
             <Button size="icon" variant="ghost" className="rounded-full text-[#7A4E3D]" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-              <X className="h-7 w-7" />
+              <X className="h-6 w-6" />
             </Button>
           </div>
           <nav className="flex-grow p-4">
