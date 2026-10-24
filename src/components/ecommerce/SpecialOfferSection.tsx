@@ -86,12 +86,12 @@ const SpecialOfferSection = () => {
       <section 
         className="relative overflow-hidden bg-[#FFF8EF] rounded-2xl min-h-[667px] md:min-h-[480px] lg:min-h-[500px]"
       >
-        {/* --- BACKGROUNDS --- */}
+        {/* --- BACKGROUNDS (Unchanged) --- */}
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat md:hidden"
           style={{ 
             backgroundImage: data.backgroundImageMobile ? `url("${data.backgroundImageMobile}")` : "none",
-            backgroundPosition: "left center" // 1. Correct BG Position for Mobile
+            backgroundPosition: "left center"
           }}
         />
         <div 
@@ -101,10 +101,9 @@ const SpecialOfferSection = () => {
             backgroundPosition: "left center" 
           }}
         />
-        {/* 2. Readability Overlay for Mobile */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#FFF8EF]/50 to-transparent md:hidden" />
         
-        {/* --- FLOATING BADGE (RESPONSIVE) --- */}
+        {/* --- FLOATING BADGE (Unchanged) --- */}
         <div className="absolute top-[20%] left-[5%] w-28 h-28 md:top-[15%] md:left-[8%] lg:left-[10%] lg:w-32 lg:h-32 z-20 animate-float">
           <div 
             className="relative w-full h-full flex items-center justify-center rounded-full text-[#7A4E3D] shadow-xl border border-white/30"
@@ -122,9 +121,9 @@ const SpecialOfferSection = () => {
           </div>
         </div>
 
-        {/* --- MOBILE CONTENT (REBUILT & ISOLATED) --- */}
+        {/* --- MOBILE CONTENT (POSITIONING FIXED) --- */}
         <div className="relative z-10 h-full md:hidden" dir="rtl">
-            <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[52%] sm:w-[55%] pr-4 flex flex-col text-right items-start">
+            <div className="absolute right-0 w-[52%] sm:w-[55%] pr-4 pt-28 flex flex-col text-right items-start">
                 <p className="font-semibold text-xs tracking-[0.15em] uppercase text-[#C7606D]">
                 {data.eyebrow}
                 </p>
