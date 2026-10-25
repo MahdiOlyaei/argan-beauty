@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { 
   Leaf, 
@@ -129,7 +130,7 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => (
         </div>
         <p className="text-[#7A4E3D]/80 text-base leading-relaxed flex-grow mb-6">{item.text}</p>
         <div className="flex items-center mt-auto" dir="rtl">
-            <img src={item.avatar} alt={item.name} className="w-12 h-12 rounded-full object-cover ml-4" />
+            <Image src={item.avatar} alt={item.name} width={48} height={48} className="w-12 h-12 rounded-full object-cover ml-4" />
             <div>
                 <h4 className="font-semibold text-[#7A4E3D]">{item.name}</h4>
                 <p className="text-sm text-[#7A4E3D]/70">{item.role}</p>

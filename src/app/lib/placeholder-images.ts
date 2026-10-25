@@ -1,0 +1,16 @@
+export const placeholderImages = [
+  { id: 'hero-products', description: 'Skincare products on stone blocks with pink flower', imageUrl: 'https://picsum.photos/seed/beauty-hero/800/1000', imageHint: 'skincare perfume' },
+  { id: 'cat-skin', description: 'Skin care products', imageUrl: 'https://picsum.photos/seed/skincare/400/400', imageHint: 'skincare cream' },
+  { id: 'cat-hair', description: 'Hair care products', imageUrl: 'https://picsum.photos/seed/haircare/400/400', imageHint: 'haircare bottle' },
+  { id: 'cat-makeup', description: 'Makeup products', imageUrl: 'https://picsum.photos/seed/makeup/400/400', imageHint: 'makeup lipstick' },
+  { id: 'cat-body', description: 'Body care products', imageUrl: 'https://picsum.photos/seed/bodycare/400/400', imageHint: 'body lotion' },
+  { id: 'cat-perfume', description: 'Perfume and fragrances', imageUrl: 'https://picsum.photos/seed/perfume/400/400', imageHint: 'perfume bottle' },
+  { id: 'cat-gifts', description: 'Gift sets', imageUrl: 'https://picsum.photos/seed/gifts/400/400', imageHint: 'gift box' },
+  { id: 'banner-beauty', description: 'Beauty banner with face and flower', imageUrl: 'https://picsum.photos/seed/beauty-banner/1200/500', imageHint: 'woman face flower' },
+] as const;
+
+export const construction = {
+  sm: 'https://picsum.photos/seed/construction-sm/500/300',
+  md: 'https://picsum.photos/seed/construction-md/800/500',
+  lg: 'https://picsum.photos/seed/construction-lg/1200/700',
+} as const;

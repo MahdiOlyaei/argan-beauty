@@ -2,11 +2,10 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '@/lib/product-data';
+import { readCart, type CartItem } from '@/lib/cart-storage';
+import type { Product } from '@/lib/types';
 
-export interface CartItem extends Product {
-  quantity: number;
-}
+export type { CartItem } from '@/lib/cart-storage';
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -30,22 +29,23 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [cartItemCount, setCartItemCount] = useState(0);
-  const [cartTotal, setCartTotal] = useState(0);
+  const [hasHydrated, setHasHydrated] = useState(false);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-      const parsedCart = JSON.parse(storedCart);
-      setCartItems(parsedCart);
-    }
+    setCartItems(readCart(localStorage.getItem('cart')));
+    setHasHydrated(true);
   }, []);
 
   useEffect(() => {
+    if (!hasHydrated) {
+      return;
+    }
+
     localStorage.setItem('cart', JSON.stringify(cartItems));
-    setCartItemCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
-    setCartTotal(cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0));
-  }, [cartItems]);
+  }, [cartItems, hasHydrated]);
+
+  const cartItemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const addToCart = (product: Product) => {
     setCartItems((prevItems) => {

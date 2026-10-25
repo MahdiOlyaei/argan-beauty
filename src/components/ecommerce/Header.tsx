@@ -139,21 +139,34 @@ export const Header = () => {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isMenuOpen]);
 
-  const IconWrapper = ({ children, badgeCount, href, onMouseEnter, onMouseLeave, className, isMobile, onClick }: { children: React.ReactNode; badgeCount?: number; href?: string; onMouseEnter?: () => void; onMouseLeave?: () => void; className?: string; isMobile?: boolean; onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void; }) => {
-    const isButtonClick = !!(isMobile && onClick);
-    const WrapperComponent: any = isButtonClick ? 'button' : Link;
-    const props = isButtonClick ? { onClick } : { href: href || '#' };
+  const IconWrapper = ({ children, badgeCount, href, onMouseEnter, onMouseLeave, className, isMobile, onClick }: { children: React.ReactNode; badgeCount?: number; href?: string; onMouseEnter?: () => void; onMouseLeave?: () => void; className?: string; isMobile?: boolean; onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; }) => {
+    const buttonClassName = `rounded-full text-[#7A4E3D] hover:bg-[#F8C4A4]/50 [&_svg]:h-6 [&_svg]:w-6 ${className || ''}`;
+    const content = (
+      <>
+        {children}
+        {badgeCount !== undefined && badgeCount > 0 && (
+          <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#D97B63] text-xs font-bold text-white ring-2 ring-[#FFF8EF]">
+            {badgeCount}
+          </span>
+        )}
+      </>
+    );
+
+    if (isMobile && onClick) {
+      return (
+        <Button asChild size="icon" variant="ghost" className={buttonClassName}>
+          <button type="button" onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="relative">
+            {content}
+          </button>
+        </Button>
+      );
+    }
 
     return (
-      <Button asChild size="icon" variant="ghost" className={`rounded-full text-[#7A4E3D] hover:bg-[#F8C4A4]/50 [&_svg]:h-6 [&_svg]:w-6 ${className || ''}`}>
-        <WrapperComponent {...props} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="relative">
-          {children}
-          {badgeCount !== undefined && badgeCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#D97B63] text-xs font-bold text-white ring-2 ring-[#FFF8EF]">
-              {badgeCount}
-            </span>
-          )}
-        </WrapperComponent>
+      <Button asChild size="icon" variant="ghost" className={buttonClassName}>
+        <Link href={href || '#'} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="relative">
+          {content}
+        </Link>
       </Button>
     );
   };
@@ -163,7 +176,7 @@ export const Header = () => {
     transition-all
     ${
       isProductsDropdownOpen
-        ? 'duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-100 visible translate-y-0'
+        ? 'duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] opacity-100 visible translate-y-0'
         : 'duration-160 ease-in opacity-0 invisible -translate-y-[8px]'
     }
     ${isProductsDropdownOpen ? 'pointer-events-auto' : 'pointer-events-none'}

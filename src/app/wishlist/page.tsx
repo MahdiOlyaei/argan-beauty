@@ -1,5 +1,6 @@
 
-import { construction } from "@/app/lib/placeholder-images.json";
+import { construction } from "@/app/lib/placeholder-images";
+import Image from 'next/image';
 
 export default function WishlistPage() {
   return (
@@ -9,7 +10,7 @@ export default function WishlistPage() {
         <p className="text-center text-lg text-gray-600">
           این صفحه در حال ساخت است. به زودی با امکانات جدید باز خواهیم گشت!
         </p>
-        <img src={construction.sm} alt="Under Construction" className="mt-8 mx-auto w-1/2" />
+        <Image src={construction.sm} alt="Under Construction" width={500} height={300} className="mt-8 mx-auto w-1/2" />
       </div>
     </div>
   );

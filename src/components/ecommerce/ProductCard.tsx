@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/lib/types';
-import { Star } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -10,10 +9,10 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link href={`/product/${product.slug}`} className="bg-white rounded-lg shadow-md overflow-hidden group">
+    <Link href={`/products/${product.id}`} className="bg-white rounded-lg shadow-md overflow-hidden group">
       <div className="relative w-full h-48">
         <Image
-          src={product.images[0]}
+          src={product.image}
           alt={product.name}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
