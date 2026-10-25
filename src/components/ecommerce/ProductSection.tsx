@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
-  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -26,31 +25,16 @@ const features = [
 ];
 
 export function ProductSection() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
   const { addToCart } = useCart();
 
   const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnHover: false })
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
-
-  React.useEffect(() => {
-    if (!api) return;
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
 
   return (
     <section className="w-full pt-8 pb-12 md:pt-12 md:pb-16 bg-[#FFF8EF]" dir="rtl">
       <div className="container mx-auto px-4">
         <Carousel 
-            setApi={setApi}
             opts={{ align: "start", loop: true, direction: 'rtl' }}
             plugins={[plugin.current]}
             className="w-full"
@@ -79,9 +63,9 @@ export function ProductSection() {
             </div>
           </div>
 
-          <CarouselContent className="py-4 -mx-2" onMouseLeave={() => plugin.current.play()}>
+          <CarouselContent className="py-4 -mx-2">
             {products.map((product) => (
-                <CarouselItem key={product.id} className="px-2 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5" onMouseEnter={() => plugin.current.stop()}>
+                <CarouselItem key={product.id} className="px-2 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
                     <Card className="h-full rounded-2xl border border-[#F8C4A4]/30 overflow-hidden shadow-none hover:shadow-xl transition-shadow duration-300 bg-white/50">
                         <CardContent className="p-0 flex flex-col h-full">
                            <div className="aspect-square w-full relative group bg-[#F8C4A4]/20">

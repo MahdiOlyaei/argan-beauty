@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { CartItem, useCart } from '@/context/CartContext';
+import { useCart } from '@/context/CartContext';
 import { X } from 'lucide-react';
 
 interface MiniCartProps {
@@ -19,7 +19,7 @@ const MiniCart: React.FC<MiniCartProps> = ({ open }) => {
   const transitionClasses = `
     transition-all
     ${open
-      ? 'duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]'
+      ? 'duration-200 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]'
       : 'duration-160 ease-in'
     }
   `;

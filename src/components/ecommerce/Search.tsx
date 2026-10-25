@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search as SearchIcon, X, Loader2 } from 'lucide-react';
-import searchData from '@/lib/search-data.json';
+import { searchData } from '@/lib/search-data';
 
 interface SearchProps {
   className?: string;
@@ -115,7 +115,7 @@ export default function Search({ className }: SearchProps) {
     }
   };
   
-  const getSuggestionLink = (item: Brand | Category | Product, index: number) => {
+  const getSuggestionLink = (item: Brand | Category | Product) => {
     if ('slug' in item) {
       if (suggestions.brands.includes(item as Brand)) {
         return `/brands/${item.slug}`;
@@ -165,7 +165,7 @@ export default function Search({ className }: SearchProps) {
               )}
               {suggestions.brands.map((brand, index) => (
                 <li key={`brand-${brand.slug}`} onMouseEnter={() => setHighlightedIndex(index)}>
-                   <Link href={getSuggestionLink(brand, index)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
+                   <Link href={getSuggestionLink(brand)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
                     <p className="font-semibold">{brand.name}</p>
                   </Link>
                 </li>
@@ -175,7 +175,7 @@ export default function Search({ className }: SearchProps) {
               )}
               {suggestions.categories.map((category, index) => (
                 <li key={`category-${category.slug}`} onMouseEnter={() => setHighlightedIndex(suggestions.brands.length + index)}>
-                  <Link href={getSuggestionLink(category, suggestions.brands.length + index)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === suggestions.brands.length + index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
+                  <Link href={getSuggestionLink(category)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === suggestions.brands.length + index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
                     <p className="font-semibold">{category.name}</p>
                   </Link>
                 </li>
@@ -185,7 +185,7 @@ export default function Search({ className }: SearchProps) {
               )}
               {suggestions.products.map((product, index) => (
                 <li key={`product-${product.id}`} onMouseEnter={() => setHighlightedIndex(suggestions.brands.length + suggestions.categories.length + index)}>
-                  <Link href={getSuggestionLink(product, suggestions.brands.length + suggestions.categories.length + index)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === suggestions.brands.length + suggestions.categories.length + index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
+                  <Link href={getSuggestionLink(product)} className={`flex items-center gap-x-4 p-3 text-right transition-colors duration-150 ease-out ${highlightedIndex === suggestions.brands.length + suggestions.categories.length + index ? 'bg-[#FEE8D8] text-[#C7606D]' : 'text-[#7A4E3D] hover:bg-[#FEE8D8]/60'}`}>
                     <Image src={product.image} alt={product.name} width={40} height={40} className="rounded-md object-cover" />
                     <div className="flex-1">
                       <p className="font-semibold">{product.name}</p>

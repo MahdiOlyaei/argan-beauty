@@ -1,6 +1,7 @@
 'use client';
 
 import { ChevronLeft } from 'lucide-react';
+import Link from 'next/link';
 import { CategoryCard } from './CategoryCard';
 import { Button } from '@/components/ui/button';
 
@@ -31,9 +32,9 @@ export function CategorySection() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="/categories" className="text-[#7A4E3D]/60 text-sm sm:text-base font-bold underline underline-offset-8 hover:text-[#C7606D] transition-colors">
+            <Link href="/categories" className="text-[#7A4E3D]/60 text-sm sm:text-base font-bold underline underline-offset-8 hover:text-[#C7606D] transition-colors">
               مشاهده همه دسته‌ها
-            </a>
+            </Link>
           </div>
         </div>
 

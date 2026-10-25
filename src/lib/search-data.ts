@@ -1,0 +1,24 @@
+export const searchData = {
+  products: [
+    { id: '1', name: 'سرم هیالورونیک اسید', category: 'مراقبت از پوست', brand: 'برند الف', image: 'https://picsum.photos/seed/product1/100/100' },
+    { id: '2', name: 'شامپو ضد ریزش', category: 'مراقبت از مو', brand: 'برند ب', image: 'https://picsum.photos/seed/product2/100/100' },
+    { id: '3', name: 'کرم پودر مات', category: 'آرایشی', brand: 'برند ج', image: 'https://picsum.photos/seed/product3/100/100' },
+    { id: '4', name: 'لوسیون بدن', category: 'مراقبت از بدن', brand: 'برند الف', image: 'https://picsum.photos/seed/product4/100/100' },
+    { id: '5', name: 'عطر زنانه', category: 'عطر و خوشبوکننده', brand: 'برند د', image: 'https://picsum.photos/seed/product5/100/100' },
+    { id: '6', name: 'رنگ موی بلوند', category: 'رنگ مو', brand: 'برند ب', image: 'https://picsum.photos/seed/product6/100/100' },
+  ],
+  categories: [
+    { name: 'مراقبت از پوست', slug: 'skin-care' },
+    { name: 'مراقبت از مو', slug: 'hair-care' },
+    { name: 'آرایشی', slug: 'makeup' },
+    { name: 'مراقبت از بدن', slug: 'body-care' },
+    { name: 'عطر و خوشبوکننده', slug: 'perfume' },
+    { name: 'رنگ مو', slug: 'hair-color' },
+  ],
+  brands: [
+    { name: 'برند الف', slug: 'brand-a' },
+    { name: 'برند ب', slug: 'brand-b' },
+    { name: 'برند ج', slug: 'brand-c' },
+    { name: 'برند د', slug: 'brand-d' },
+  ],
+} as const;

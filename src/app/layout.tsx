@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ecommerce/Header";
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body className={vazirmatn.className}>
         <CartProvider>
-          <Header />
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
           <main>{children}</main>
           <Footer />
         </CartProvider>

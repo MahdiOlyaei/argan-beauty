@@ -3,7 +3,9 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  images: string[];
+  image: string;
   category: string;
+  rating: number;
+  reviewCount: number;
   slug: string;
 }
